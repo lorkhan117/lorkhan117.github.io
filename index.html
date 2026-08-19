@@ -316,21 +316,23 @@
     letter-spacing:.12em;color:var(--paper-mute);margin-bottom:1.9rem;
   }
   .toolstrip__track{
-    overflow:hidden;
-    -webkit-mask-image:linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
-    mask-image:linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    -webkit-mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+    mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
   }
-  .toolstrip__marquee{display:flex;width:max-content;animation:toolMarquee 28s linear infinite;}
+  .toolstrip__track::-webkit-scrollbar{display:none;}
+  .toolstrip__marquee{display:flex;}
   .toolstrip__group{display:flex;align-items:center;gap:3.4rem;flex:none;padding-right:3.4rem;}
-  @keyframes toolMarquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-  .tool-item{display:flex;align-items:center;gap:.6rem;color:var(--paper-mute);white-space:nowrap;transition:color .3s ease;}
+  .tool-item{
+    scroll-snap-align:start;display:flex;align-items:center;gap:.6rem;
+    color:var(--paper-mute);white-space:nowrap;transition:color .3s ease;
+  }
   .tool-item:hover{color:var(--cyan-300);}
   .tool-item svg{width:19px;height:19px;flex:none;}
   .tool-item span{font-family:var(--font-mono);font-size:.9rem;font-weight:500;letter-spacing:.01em;}
 
   @media (prefers-reduced-motion: reduce){
-    .toolstrip__marquee{animation:none;}
     .toolstrip__group[aria-hidden="true"]{display:none;}
     .toolstrip__track{-webkit-mask-image:none;mask-image:none;}
   }
@@ -1498,6 +1500,29 @@
     revealEls.forEach(function(el){ io.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  }
+
+  // ---- Tool strip auto-advance (steps by whole item, always lands clean) ----
+  var toolTrack = document.querySelector('.toolstrip__track');
+  if(toolTrack && !reduceMotion){
+    var toolAutoTimer = null;
+    function stepTools(){
+      var atEnd = toolTrack.scrollLeft + toolTrack.clientWidth >= toolTrack.scrollWidth - 4;
+      if(atEnd){
+        toolTrack.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        var item = toolTrack.querySelector('.tool-item');
+        var gap = 54; // matches 3.4rem gap between items
+        var width = item ? item.getBoundingClientRect().width + gap : 200;
+        toolTrack.scrollBy({ left: width, behavior: 'smooth' });
+      }
+    }
+    function startToolAuto(){ stopToolAuto(); toolAutoTimer = setInterval(stepTools, 2200); }
+    function stopToolAuto(){ if(toolAutoTimer){ clearInterval(toolAutoTimer); toolAutoTimer = null; } }
+    startToolAuto();
+    toolTrack.addEventListener('pointerenter', stopToolAuto);
+    toolTrack.addEventListener('pointerleave', startToolAuto);
+    toolTrack.addEventListener('touchstart', stopToolAuto, { passive:true });
   }
 
   // ---- Savings calculator ----
