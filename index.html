@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rangel IA — Tu ecosistema digital completo</title>
-<meta name="description" content="Tienda online, redes sociales, campañas de pauta y un agente de IA por WhatsApp — todo diseñado y gestionado como una sola operación. Rangel IA: el ecosistema digital completo de tu negocio.">
+<title>Zolvex — Tu ecosistema digital completo</title>
+<meta name="description" content="Tienda online, redes sociales, campañas de pauta y un agente de IA por WhatsApp — todo diseñado y gestionado como una sola operación. Zolvex: el ecosistema digital completo de tu negocio.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%235EEAD4'/%3E%3Cstop offset='1' stop-color='%23A3E635'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='%230A0710'/%3E%3Cpolygon points='50,14 86,50 50,86 14,50' fill='url(%23g)'/%3E%3C/svg%3E">
 
@@ -506,6 +506,25 @@
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
   .case-metric span{font-size:.82rem;color:var(--paper-mute);}
+  .case-status{
+    display:inline-flex;align-items:center;gap:.55rem;align-self:flex-start;
+    font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+    padding:.5rem .9rem;border-radius:999px;border:1px solid;
+  }
+  .case-status::before{content:'';width:7px;height:7px;border-radius:50%;flex:none;}
+  .case-status--live{color:var(--green-300);border-color:rgba(163,230,53,.35);background:rgba(163,230,53,.06);}
+  .case-status--live::before{background:var(--green-400);box-shadow:0 0 8px var(--green-glow);}
+  .case-status--build{color:var(--cyan-300);border-color:rgba(94,234,212,.35);background:rgba(94,234,212,.06);}
+  .case-status--build::before{background:var(--cyan-400);box-shadow:0 0 8px var(--cyan-glow);}
+  .case-link{
+    display:inline-flex;align-items:center;gap:.4rem;margin-top:auto;
+    font-size:.88rem;font-weight:700;color:var(--cyan-300);transition:color .25s ease,gap .25s ease;
+  }
+  .case-link svg{width:14px;height:14px;flex:none;}
+  .case-link:hover{color:var(--green-300);gap:.6rem;}
+  .case-card--cta{border-style:dashed;border-color:var(--line-strong);background:rgba(244,240,251,.02);}
+  .case-card--cta:hover{border-color:var(--green-400);--spot-a:0;}
+  .case-card--cta .case-card__body{justify-content:space-between;}
   @media (max-width:980px){.cases-grid{grid-template-columns:1fr;}}
 
   /* ===================== TESTIMONIALS ===================== */
@@ -779,7 +798,7 @@
         </linearGradient></defs>
         <polygon points="50,8 92,50 50,92 8,50" fill="url(#navGrad)"/>
       </svg>
-      <span class="brand__word">RANGEL <em>IA</em></span>
+      <span class="brand__word">ZOLVEX</span>
     </a>
 
     <nav class="nav__links" id="navLinks">
@@ -787,13 +806,12 @@
       <a href="#agente">Demo</a>
       <a href="#proceso">Proceso</a>
       <a href="#casos">Casos</a>
-      <a href="#opiniones">Reseñas</a>
       <a href="#precios">Precios</a>
       <a href="#faq">Preguntas</a>
     </nav>
 
     <div class="nav__right">
-      <a class="btn btn--solid nav__cta" href="https://wa.me/573000000000?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Rangel%20IA" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+      <a class="btn btn--solid nav__cta" href="https://wa.me/573000000000?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Zolvex" target="_blank" rel="noopener">Hablar por WhatsApp</a>
       <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -869,7 +887,7 @@
             <svg viewBox="0 0 100 100" width="16" height="16"><polygon points="50,8 92,50 50,92 8,50" fill="#fff"/></svg>
           </span>
           <div class="phone__who">
-            <strong>Rangel IA</strong>
+            <strong>Zolvex</strong>
             <span><span class="live-dot" style="margin-right:.4rem"></span>en línea</span>
           </div>
         </div>
@@ -885,10 +903,9 @@
   <!-- ===================== STATS ===================== -->
   <section class="stats" data-reveal>
     <div class="container stats__grid">
-      <div class="stat"><b data-count="40" data-suffix="+">+40</b><span>Negocios con su ecosistema digital activo</span></div>
-      <div class="stat"><b data-count="120" data-suffix="K+">120K+</b><span>Conversaciones y pedidos gestionados</span></div>
-      <div class="stat"><b>24/7</b><span>Tiempo de respuesta</span></div>
-      <div class="stat"><b data-count="98" data-suffix="%">98%</b><span>Clientes que renuevan</span></div>
+      <div class="stat"><b>24/7</b><span>Tiempo de respuesta del agente</span></div>
+      <div class="stat"><b data-count="1" data-suffix=" semana">1 semana</b><span>Para tener tu primer agente funcionando</span></div>
+      <div class="stat"><b>100%</b><span>Adaptado a tu negocio, no una plantilla</span></div>
     </div>
   </section>
 
@@ -1016,9 +1033,9 @@
   <section id="casos">
     <div class="container">
       <div class="section-head" data-reveal>
-        <span class="eyebrow">Resultados</span>
-        <h2>Negocios que dejaron de perder ventas por no responder a tiempo</h2>
-        <p>Casos de ejemplo que muestran el tipo de impacto que buscamos en cada implementación.</p>
+        <span class="eyebrow">Negocios reales</span>
+        <h2>Con quiénes estamos construyendo esto</h2>
+        <p>Sin cifras infladas: así es el trabajo real que ya está en marcha con nuestros primeros clientes.</p>
       </div>
 
       <div class="cases-grid">
@@ -1026,12 +1043,16 @@
           <div class="case-card__top">
             <div>
               <span class="case-card__tag">Automotriz</span>
-              <h3>Casa Rueda</h3>
+              <h3>Carburautos</h3>
             </div>
           </div>
           <div class="case-card__body">
-            <p>Tenían el taller lleno de clientes de toda la vida, pero cero presencia digital y citas perdidas por no responder a tiempo.</p>
-            <div class="case-metric"><b>92%</b><span>de citas confirmadas por el agente desde el primer mes</span></div>
+            <p>Taller con clientela de años, pero las citas y cotizaciones se perdían fuera de horario. Le construimos un agente de IA por WhatsApp que agenda citas, cotiza servicios básicos y escala a un humano cuando la conversación lo requiere.</p>
+            <span class="case-status case-status--live">En operación</span>
+            <a class="case-link" href="https://www.facebook.com/carburautos/" target="_blank" rel="noopener">
+              Ver en Facebook
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
           </div>
         </div>
 
@@ -1039,129 +1060,31 @@
           <div class="case-card__top">
             <div>
               <span class="case-card__tag">Moda infantil</span>
-              <h3>Nido Kids</h3>
+              <h3>Yemarkids</h3>
             </div>
           </div>
           <div class="case-card__body">
-            <p>Tienda física con años de trayectoria, pero sin tienda online, redes activas ni forma de vender fuera del local.</p>
-            <div class="case-metric"><b>+65%</b><span>en conversión de conversación a venta con el ecosistema completo</span></div>
+            <p>Marca con producto sólido, pero sin ecosistema digital: tienda online, redes y campañas iban cada una por su lado. Le armamos el ecosistema completo, incluido su propio agente de WhatsApp.</p>
+            <span class="case-status case-status--build">En construcción</span>
+            <a class="case-link" href="https://www.instagram.com/yemarkids/" target="_blank" rel="noopener">
+              Ver en Instagram
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
           </div>
         </div>
 
-        <div class="case-card" data-reveal>
+        <div class="case-card case-card--cta" data-reveal>
           <div class="case-card__top">
             <div>
-              <span class="case-card__tag">Suplementos</span>
-              <h3>Verde Vital</h3>
+              <span class="case-card__tag">El siguiente</span>
+              <h3>El que falta eres tú</h3>
             </div>
           </div>
           <div class="case-card__body">
-            <p>Las campañas generaban mensajes, pero nadie los seguía a tiempo y el contenido de redes estaba abandonado.</p>
-            <div class="case-metric"><b>-38%</b><span>en costo por venta al unir campañas, redes y agente en un solo flujo</span></div>
+            <p>Cada negocio en esta lista empezó con una conversación. El tuyo también tiene un lugar aquí — solo falta que des el primer paso para dejar de perder ventas por no responder a tiempo.</p>
+            <a class="btn btn--ghost btn--block" href="#contacto">Hablemos de tu negocio</a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== TESTIMONIALS ===================== -->
-  <section id="opiniones" class="testimonials">
-    <div class="container">
-      <div class="t-head" data-reveal>
-        <div class="section-head" style="margin-bottom:0;">
-          <span class="eyebrow">Reseñas</span>
-          <h2>Lo que dicen quienes ya automatizaron</h2>
-        </div>
-        <div class="t-controls">
-          <button id="tPrev" aria-label="Reseña anterior">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button id="tNext" aria-label="Siguiente reseña">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="t-track" id="tTrack" data-reveal>
-        <article class="t-card">
-          <div class="t-brand"><span class="t-brand__logo" style="background:#E38C9A"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="10" r="5" stroke="white" stroke-width="1.7" fill="none"/><rect x="9.3" y="15" width="5.4" height="2.8" rx="1.4" fill="white"/><circle cx="12" cy="10" r="1.6" fill="white"/></svg></span><span class="t-brand__name">Nido Kids</span></div>
-          <div class="t-stars" aria-label="5 de 5 estrellas">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-          </div>
-          <p>"No fue solo el agente. Nos armaron la tienda, las redes empezaron a moverse y las campañas por fin traían gente que sí compraba."</p>
-          <div class="t-person">
-            <span class="t-avatar" style="background:linear-gradient(135deg,#E38C9A,#F2B8C0)">MF</span>
-            <div><strong>María Fernanda G.</strong><span>Dueña, Nido Kids</span></div>
-          </div>
-        </article>
-
-        <article class="t-card">
-          <div class="t-brand"><span class="t-brand__logo" style="background:#D9793F"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="6.6" stroke="white" stroke-width="1.7" fill="none"/><circle cx="12" cy="12" r="1.8" fill="white"/><path d="M12 6v2.4M12 15.6V18M6 12h2.4M15.6 12H18" stroke="white" stroke-width="1.7" stroke-linecap="round"/></svg></span><span class="t-brand__name">Casa Rueda</span></div>
-          <div class="t-stars" aria-label="5 de 5 estrellas">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-          </div>
-          <p>"Recuperamos las citas que antes perdíamos en la noche. El taller ahora factura horas que simplemente se nos escapaban."</p>
-          <div class="t-person">
-            <span class="t-avatar" style="background:linear-gradient(135deg,#D9793F,#F0A868)">AR</span>
-            <div><strong>Andrés Rueda</strong><span>Gerente, Casa Rueda</span></div>
-          </div>
-        </article>
-
-        <article class="t-card">
-          <div class="t-brand"><span class="t-brand__logo" style="background:#4F9B5C"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 18c-1.2-6.4 2-12 12-13 1 9.4-4 13-12 13z" fill="white"/><path d="M7.2 16.8C9 13 12 10 16 8" stroke="#2F6B3A" stroke-width="1.1" fill="none"/></svg></span><span class="t-brand__name">Verde Vital</span></div>
-          <div class="t-stars" aria-label="5 de 5 estrellas">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-          </div>
-          <p>"Lo que más valoro es que el agente sabe cuándo escalarnos una conversación a un humano. No se siente robotizado."</p>
-          <div class="t-person">
-            <span class="t-avatar" style="background:linear-gradient(135deg,#4F9B5C,#7FC98C)">CT</span>
-            <div><strong>Camila Torres</strong><span>Marketing, Verde Vital</span></div>
-          </div>
-        </article>
-
-        <article class="t-card">
-          <div class="t-brand"><span class="t-brand__logo" style="background:#C6538C"><svg viewBox="0 0 24 24" width="18" height="18"><g fill="white"><circle cx="12" cy="7.3" r="2.5"/><circle cx="16.2" cy="10" r="2.5"/><circle cx="14.6" cy="15" r="2.5"/><circle cx="9.4" cy="15" r="2.5"/><circle cx="7.8" cy="10" r="2.5"/></g><circle cx="12" cy="11" r="1.9" fill="#C6538C"/></svg></span><span class="t-brand__name">Bloom Studio</span></div>
-          <div class="t-stars" aria-label="4 de 5 estrellas">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-          </div>
-          <p>"El proceso de implementación fue más rápido de lo que esperaba. Eso sí, tuvimos que afinar el tono del agente las primeras semanas."</p>
-          <div class="t-person">
-            <span class="t-avatar" style="background:linear-gradient(135deg,#C6538C,#E28AB5)">JP</span>
-            <div><strong>Julián Peña</strong><span>Operaciones, Bloom Studio</span></div>
-          </div>
-        </article>
-
-        <article class="t-card">
-          <div class="t-brand"><span class="t-brand__logo" style="background:#5B7C99"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 11.5 12 5l8 6.5" stroke="white" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10.8V19h12v-8.2" stroke="white" stroke-width="1.7" fill="none" stroke-linejoin="round"/><rect x="10.2" y="14" width="3.6" height="5" fill="white"/></svg></span><span class="t-brand__name">Vitta Home</span></div>
-          <div class="t-stars" aria-label="5 de 5 estrellas">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
-          </div>
-          <p>"Nos daba pereza pensar en manejar tienda, redes y publicidad por separado. Que sea un solo equipo resolviendo todo fue lo que nos convenció."</p>
-          <div class="t-person">
-            <span class="t-avatar" style="background:linear-gradient(135deg,#5B7C99,#8AA8C0)">LS</span>
-            <div><strong>Laura Salcedo</strong><span>Dueña, Vitta Home</span></div>
-          </div>
-        </article>
       </div>
     </div>
   </section>
@@ -1172,7 +1095,7 @@
       <div class="section-head centered" data-reveal>
         <span class="eyebrow">La diferencia</span>
         <h2>4 roles distintos vs. un solo equipo</h2>
-        <p>Esto es lo que cambia entre armarlo por tu cuenta, contratar una agencia tradicional, o tener el ecosistema completo con Rangel IA.</p>
+        <p>Esto es lo que cambia entre armarlo por tu cuenta, contratar una agencia tradicional, o tener el ecosistema completo con Zolvex.</p>
       </div>
 
       <div class="compare-wrap" data-reveal>
@@ -1182,7 +1105,7 @@
               <th scope="col"><span class="sr-only">Aspecto</span></th>
               <th scope="col">Contratar por separado</th>
               <th scope="col">Agencia tradicional</th>
-              <th scope="col" class="compare-table__featured">Rangel IA <span class="compare-table__badge">Recomendado</span></th>
+              <th scope="col" class="compare-table__featured">Zolvex <span class="compare-table__badge">Recomendado</span></th>
             </tr>
           </thead>
           <tbody>
@@ -1263,7 +1186,7 @@
             <b id="calcSeparate">$3.200.000</b>
           </div>
           <div class="calc-result__row calc-result__row--featured">
-            <span>Ecosistema Completo, Rangel IA</span>
+            <span>Ecosistema Completo, Zolvex</span>
             <b>$3.000.000</b>
           </div>
           <div class="calc-savings" id="calcSavings">
@@ -1423,7 +1346,7 @@
           <svg class="brand__mark" viewBox="0 0 100 100" aria-hidden="true">
             <polygon points="50,8 92,50 50,92 8,50" fill="url(#navGrad)"/>
           </svg>
-          <span class="brand__word">RANGEL <em>IA</em></span>
+          <span class="brand__word">ZOLVEX</span>
         </a>
         <p>Tienda, redes, pauta y un agente de IA — el ecosistema digital completo de tu negocio, en un solo equipo.</p>
       </div>
@@ -1442,7 +1365,7 @@
           <h4>Contacto</h4>
           <ul>
             <li><a href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a></li>
-            <li><a href="mailto:hola@rangelia.co">hola@rangelia.co</a></li>
+            <li><a href="mailto:hola@zolvex.co">hola@zolvex.co</a></li>
             <li><a href="#top">Cali, Colombia</a></li>
           </ul>
         </div>
@@ -1450,7 +1373,7 @@
     </div>
 
     <div class="footer__bottom">
-      <span>© 2026 Rangel IA. Página de muestra.</span>
+      <span>© 2026 Zolvex. Página de muestra.</span>
       <span>Diseñado y automatizado con IA</span>
     </div>
   </div>
@@ -1498,7 +1421,7 @@
 
   // ---- Cursor spotlight on cards ----
   if(window.matchMedia('(pointer: fine)').matches){
-    var spotlightEls = document.querySelectorAll('.service-card, .case-card, .price-card, .t-card');
+    var spotlightEls = document.querySelectorAll('.service-card, .case-card, .price-card');
     spotlightEls.forEach(function(el){
       el.addEventListener('pointermove', function(e){
         var r = el.getBoundingClientRect();
@@ -1713,37 +1636,6 @@
     }
   }
 
-  // ---- Testimonials carousel ----
-  var track = document.getElementById('tTrack');
-  var prev = document.getElementById('tPrev');
-  var next = document.getElementById('tNext');
-  function scrollByCard(dir){
-    var card = track.querySelector('.t-card');
-    var gap = 21;
-    var width = card ? card.offsetWidth + gap : 340;
-    track.scrollBy({ left: dir * width, behavior: 'smooth' });
-  }
-  prev.addEventListener('click', function(){ scrollByCard(-1); stopAuto(); });
-  next.addEventListener('click', function(){ scrollByCard(1); stopAuto(); });
-
-  var autoTimer = null;
-  function startAuto(){
-    if(reduceMotion) return;
-    stopAuto();
-    autoTimer = setInterval(function(){
-      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-      if(atEnd){ track.scrollTo({ left: 0, behavior: 'smooth' }); }
-      else { scrollByCard(1); }
-    }, 3800);
-  }
-  function stopAuto(){
-    if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
-  }
-  startAuto();
-  track.addEventListener('pointerenter', stopAuto);
-  track.addEventListener('pointerleave', startAuto);
-  track.addEventListener('touchstart', stopAuto, { passive:true });
-
   // ---- WhatsApp contact form ----
   var WHATSAPP_NUMBER = "573000000000"; // TODO: reemplaza por tu número real, formato 57XXXXXXXXXX
   var form = document.getElementById('contactForm');
@@ -1761,7 +1653,7 @@
     }
 
     var text = "Hola, soy " + name + " de " + business + ". " +
-      (message ? message : "Quiero armar mi ecosistema digital con Rangel IA.");
+      (message ? message : "Quiero armar mi ecosistema digital con Zolvex.");
     var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
 
     window.open(url, "_blank", "noopener");
