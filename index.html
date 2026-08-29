@@ -33,8 +33,8 @@
     --cyan-300:#A8F1E3;
     --cyan-glow:rgba(94,234,212,.35);
     --paper:#f4f0fb;
-    --paper-dim:#bcb1d9;
-    --paper-mute:#8a7fab;
+    --paper-dim:#d6cfec;
+    --paper-mute:#a89bc9;
     --line:rgba(244,240,251,.09);
     --line-strong:rgba(244,240,251,.18);
     --font-display:'Cinzel', serif;
@@ -156,10 +156,10 @@
     display:flex;align-items:center;justify-content:space-between;gap:1rem;
     padding:1.1rem 1.5rem;max-width:var(--container);margin:0 auto;
   }
-  .brand{display:flex;align-items:center;gap:.6rem;}
-  .brand__mark{width:26px;height:26px;flex:none;}
+  .brand{display:flex;align-items:center;gap:.08rem;}
+  .brand__mark{width:32px;height:32px;flex:none;margin-right:2px;}
   .brand__word{
-    font-family:var(--font-display);font-weight:700;font-size:1.15rem;letter-spacing:.03em;
+    font-family:var(--font-display);font-weight:700;font-size:1.3rem;letter-spacing:.03em;
     color:var(--paper);
   }
   .brand__word em{font-style:normal;color:var(--green-400);}
@@ -239,6 +239,35 @@
     animation:livePulse 2.2s ease-out infinite;
   }
   @keyframes livePulse{0%{transform:scale(.5);opacity:1;}100%{transform:scale(2.2);opacity:0;}}
+
+  .bg-brand{
+    position:fixed;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    font-family:var(--font-display);font-weight:700;
+    font-size:min(16vw, 240px);letter-spacing:.02em;line-height:1;
+    color:transparent;
+    background:linear-gradient(120deg, rgba(94,234,212,.16), rgba(163,230,53,.11));
+    -webkit-background-clip:text;background-clip:text;
+    filter:blur(3px);white-space:nowrap;
+    pointer-events:none;user-select:none;z-index:0;
+    opacity:.55;
+    animation:brandBreathe 7s ease-in-out infinite;
+    will-change:transform, opacity;
+  }
+  @keyframes brandBreathe{0%,100%{opacity:.4;}50%{opacity:.75;}}
+  @media (prefers-reduced-motion: reduce){.bg-brand{animation:none;opacity:.55;}}
+  @media (max-width:700px){.bg-brand{font-size:min(28vw, 170px);}}
+
+  .sticky-cta{
+    display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+    padding:.85rem 1.1rem;padding-bottom:calc(.85rem + env(safe-area-inset-bottom));
+    background:rgba(10,7,16,.92);backdrop-filter:blur(10px);
+    border-top:1px solid var(--line-strong);
+    align-items:center;justify-content:space-between;gap:1rem;
+  }
+  .sticky-cta span{font-size:.86rem;color:var(--paper-dim);font-weight:600;}
+  .sticky-cta .btn{flex:none;padding:.6rem 1.1rem;font-size:.86rem;}
+  @media (max-width:700px){.sticky-cta{display:flex;}body{padding-bottom:64px;}}
   .hero h1{
     font-family:var(--font-display);font-weight:700;
     font-size:clamp(2.4rem, 1.6rem + 3.6vw, 4.1rem);line-height:1.08;
@@ -370,6 +399,18 @@
   .service-card p{color:var(--paper-dim);font-size:.93rem;line-height:1.65;}
   @media (max-width:980px){.services-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:600px){.services-grid{grid-template-columns:1fr;}}
+
+  .free-consult{
+    margin-top:2rem;padding:2.2rem 2.4rem;border-radius:var(--radius-l);
+    display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+    background:linear-gradient(120deg, rgba(124,58,237,.16), rgba(94,234,212,.08));
+    border:1px solid rgba(94,234,212,.28);
+  }
+  .free-consult__text{flex:1;min-width:260px;}
+  .free-consult__text h3{font-size:1.25rem;font-weight:700;color:var(--paper);margin:0 0 .5rem;}
+  .free-consult__text p{color:var(--paper-dim);font-size:.98rem;line-height:1.6;margin:0;max-width:52ch;}
+  .free-consult .btn{flex:none;}
+  @media (max-width:700px){.free-consult{padding:1.7rem;text-align:center;justify-content:center;}}
 
   /* ===================== CHAT DEMO ===================== */
   .chatdemo__inner{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;}
@@ -655,7 +696,8 @@
   }
 
   /* ===================== PRICING ===================== */
-  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;align-items:stretch;}
+  .pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;align-items:stretch;}
+  @media (min-width:1100px){.pricing-grid{grid-template-columns:repeat(4,1fr);}}
   .price-card{
     --spot-a:0;
     border-radius:var(--radius-m);border:1px solid var(--line);
@@ -689,7 +731,13 @@
     display:flex;gap:.65rem;align-items:flex-start;font-size:.89rem;color:var(--paper-dim);
   }
   .price-card li svg{width:16px;height:16px;flex:none;margin-top:.15rem;color:var(--cyan-400);}
-  @media (max-width:980px){
+  .price-card__note{font-size:.78rem;color:var(--paper-mute);line-height:1.5;margin:-.9rem 0 1.5rem;}
+  .price-card__alt{
+    margin-top:-.6rem;margin-bottom:1.4rem;padding-top:1rem;border-top:1px dashed var(--line-strong);
+    font-size:.82rem;color:var(--paper-dim);line-height:1.55;
+  }
+  .price-card__alt b{color:var(--paper);display:block;font-size:.95rem;margin-bottom:.2rem;}
+  @media (max-width:1099px){
     .pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto;}
     .price-card--featured{transform:none;}
   }
@@ -787,6 +835,7 @@
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <a href="#main" class="skip-link">Saltar al contenido</a>
 <div class="grain" aria-hidden="true"></div>
+<div class="bg-brand" id="bgBrand" aria-hidden="true">ZOLVEX</div>
 
 <!-- ===================== NAV ===================== -->
 <header class="nav" id="siteNav">
@@ -798,7 +847,7 @@
         </linearGradient></defs>
         <polygon points="10,10 90,10 90,30 43,70 90,70 90,90 10,90 10,70 57,30 10,30" fill="url(#navGrad)"/>
       </svg>
-      <span class="brand__word">ZOLVEX</span>
+      <span class="brand__word">OLVEX</span>
     </a>
 
     <nav class="nav__links" id="navLinks">
@@ -811,7 +860,7 @@
     </nav>
 
     <div class="nav__right">
-      <a class="btn btn--solid nav__cta" href="https://wa.me/573000000000?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Zolvex" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+      <a class="btn btn--solid nav__cta" href="https://wa.me/573156617585?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Zolvex" target="_blank" rel="noopener">Hablar por WhatsApp</a>
       <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -826,7 +875,7 @@
         <span class="eyebrow hero__eyebrow">Ecosistema digital completo</span>
         <div class="live-badge"><span class="live-dot"></span>Agente disponible ahora</div>
         <h1>Todo tu negocio digital, <span class="accent">funcionando como un solo equipo</span></h1>
-        <p class="lead">Tienda online, redes sociales gestionadas, campañas de pauta y un agente de IA por WhatsApp — no son servicios sueltos, es una sola operación diseñada para vender todos los días.</p>
+        <p class="lead">Tienda online, redes sociales gestionadas, campañas de pauta y un agente de IA por WhatsApp — no son servicios sueltos, es una sola operación diseñada para vender todos los días. ¿La tuya ya lo está haciendo?</p>
         <div class="hero__ctas">
           <a class="btn btn--solid" href="#contacto">Quiero mi ecosistema digital</a>
           <a class="btn btn--ghost" href="#servicios">Ver qué incluye</a>
@@ -870,7 +919,7 @@
         <div class="section-head" style="margin-bottom:1.6rem;" data-reveal>
           <span class="eyebrow">Así se ve en acción</span>
           <h2>Tu agente respondiendo en tiempo real</h2>
-          <p>No es un mockup estático: así conversa con un cliente real — agenda, resuelve dudas y cierra la venta sin que nadie del equipo escriba una palabra.</p>
+          <p>Así se ve funcionando: agenda, resuelve dudas y cierra la venta sin que nadie del equipo escriba una palabra. Esta es una simulación de cómo conversa tu agente — puedes probarlo con uno real cuando agendes tu consulta.</p>
         </div>
         <ul class="chatdemo__points" data-reveal>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Responde en segundos, a cualquier hora</li>
@@ -883,7 +932,7 @@
       <div class="phone" data-reveal aria-hidden="true">
         <div class="phone__header">
           <span class="phone__avatar">
-            <svg viewBox="0 0 100 100" width="16" height="16"><polygon points="50,8 92,50 50,92 8,50" fill="#fff"/></svg>
+            <svg viewBox="0 0 100 100" width="16" height="16"><polygon points="10,10 90,10 90,30 43,70 90,70 90,90 10,90 10,70 57,30 10,30" fill="#fff"/></svg>
           </span>
           <div class="phone__who">
             <strong>Zolvex</strong>
@@ -933,12 +982,12 @@
       <div class="pill-row__track">
         <div class="pill-row__marquee pill-row__marquee--right">
           
-          <div class="pill-row__group"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
-          <div class="pill-row__group" aria-hidden="true"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
-          <div class="pill-row__group" aria-hidden="true"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
-          <div class="pill-row__group" aria-hidden="true"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
-          <div class="pill-row__group" aria-hidden="true"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
-          <div class="pill-row__group" aria-hidden="true"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
+          <div class="pill-row__group"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#010101"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M16 3c.3 2 1.8 3.6 3.8 3.9V9.6c-1.4 0-2.7-.4-3.8-1.2v6.7a5 5 0 1 1-4-4.9v2.7a2.3 2.3 0 1 0 1.6 2.2V3H16z" fill="white"/></svg></span>TikTok Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
+          <div class="pill-row__group" aria-hidden="true"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#010101"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M16 3c.3 2 1.8 3.6 3.8 3.9V9.6c-1.4 0-2.7-.4-3.8-1.2v6.7a5 5 0 1 1-4-4.9v2.7a2.3 2.3 0 1 0 1.6 2.2V3H16z" fill="white"/></svg></span>TikTok Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
+          <div class="pill-row__group" aria-hidden="true"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#010101"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M16 3c.3 2 1.8 3.6 3.8 3.9V9.6c-1.4 0-2.7-.4-3.8-1.2v6.7a5 5 0 1 1-4-4.9v2.7a2.3 2.3 0 1 0 1.6 2.2V3H16z" fill="white"/></svg></span>TikTok Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
+          <div class="pill-row__group" aria-hidden="true"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#010101"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M16 3c.3 2 1.8 3.6 3.8 3.9V9.6c-1.4 0-2.7-.4-3.8-1.2v6.7a5 5 0 1 1-4-4.9v2.7a2.3 2.3 0 1 0 1.6 2.2V3H16z" fill="white"/></svg></span>TikTok Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
+          <div class="pill-row__group" aria-hidden="true"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#010101"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M16 3c.3 2 1.8 3.6 3.8 3.9V9.6c-1.4 0-2.7-.4-3.8-1.2v6.7a5 5 0 1 1-4-4.9v2.7a2.3 2.3 0 1 0 1.6 2.2V3H16z" fill="white"/></svg></span>TikTok Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
+          <div class="pill-row__group" aria-hidden="true"><span class="pill"><span class="pill__icon" style="background:#25D366"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M17 7a7 7 0 0 0-11.6 7.7L4 21l6.4-1.4A7 7 0 1 0 17 7z" stroke="white" stroke-width="1.5"/><path d="M8.5 9.8c.4 2.6 2.4 4.5 4.9 4.9.9.1 1.1-.6 1.1-1.1v-.9l-1.8-.5-.6.7c-1-.5-1.8-1.3-2.3-2.3l.7-.6-.5-1.8h-.9c-.5 0-1.2.2-1.1 1.1z" fill="white"/></svg></span>WhatsApp Business</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="4" width="16" height="16" rx="5" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" stroke="white" stroke-width="1.6"/><circle cx="16.3" cy="7.7" r="1" fill="white"/></svg></span>Instagram</span><span class="pill"><span class="pill__icon" style="background:linear-gradient(135deg,#00B2FF,#006AFF)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 3C6.9 3 3 6.7 3 11.6c0 2.7 1.2 5 3.1 6.6V21l2.9-1.6c.9.3 1.9.4 3 .4 5.1 0 9-3.7 9-8.6S17.1 3 12 3z" fill="white" opacity=".95"/><path d="M6.8 13.6l3.1-3.3 2.5 2 3.3-3.3-3.4 4.9-2.5-2-3 2.7z" fill="#006AFF"/></svg></span>Messenger</span><span class="pill"><span class="pill__icon" style="background:#0668E1"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M4 17 9 11l3.5 3L20 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta Ads</span><span class="pill"><span class="pill__icon" style="background:#010101"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M16 3c.3 2 1.8 3.6 3.8 3.9V9.6c-1.4 0-2.7-.4-3.8-1.2v6.7a5 5 0 1 1-4-4.9v2.7a2.3 2.3 0 1 0 1.6 2.2V3H16z" fill="white"/></svg></span>TikTok Ads</span><span class="pill"><span class="pill__icon" style="background:#95BF47"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M6.5 7 6 19.5l7 1.5 5-1.3-1-13-2-1-.8.2C13.7 4.3 12.8 4 12 4c-2 0-3.6 1.4-4 3l-1.5 0z" fill="white"/><path d="M13.5 4.9c.6.4 1 1.3 1 2.5" stroke="#5E8E3E" stroke-width=".8"/></svg></span>Shopify</span><span class="pill"><span class="pill__icon" style="background:#4285F4"><svg viewBox="0 0 24 24" width="13" height="13" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="white" stroke-width="1.6"/><path d="M4 9.5h16" stroke="white" stroke-width="1.6"/><rect x="13" y="12.3" width="4.3" height="4.3" fill="white"/></svg></span>Google Calendar</span></div>
         </div>
       </div>
       <div class="pill-row__track">
@@ -977,8 +1026,8 @@
         </div>
         <div class="service-card" data-reveal>
           <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0A0710" stroke-width="2"><path d="M3 3v18h18"/><path d="M18.7 8.7l-5.1 5.1-2.8-2.8L4.3 17.5"/></svg></div>
-          <h3>Campañas de Meta Ads</h3>
-          <p>Publicidad gestionada de principio a fin, conectada directo a la conversación — no solo al clic.</p>
+          <h3>Campañas de Meta y TikTok Ads</h3>
+          <p>Publicidad gestionada de principio a fin en Meta y TikTok, conectada directo a la conversación — no solo al clic.</p>
         </div>
         <div class="service-card" data-reveal>
           <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0A0710" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
@@ -990,6 +1039,14 @@
           <h3>Automatización y flujos</h3>
           <p>Remarketing, seguimiento de pedidos y reportes automáticos — sin trabajo manual repetitivo detrás de cámaras.</p>
         </div>
+      </div>
+
+      <div class="free-consult" data-reveal>
+        <div class="free-consult__text">
+          <h3>¿No sabes por dónde empezar?</h3>
+          <p>Agenda una consulta gratis de 20 minutos y te decimos, sin compromiso, en qué punto está tu negocio hoy y qué necesitaría para dejar de perder ventas por no responder a tiempo.</p>
+        </div>
+        <a class="btn btn--solid" href="#contacto">Agendar consulta gratis</a>
       </div>
     </div>
   </section>
@@ -1112,7 +1169,7 @@
               <th scope="row">Costo mensual</th>
               <td>3-4 sueldos independientes</td>
               <td>Tarifa de agencia + extras</td>
-              <td class="compare-table__featured">$3.000.000 todo incluido</td>
+              <td class="compare-table__featured">$2.500.000 todo incluido</td>
             </tr>
             <tr>
               <th scope="row">Personas con quién coordinar</th>
@@ -1186,7 +1243,7 @@
           </div>
           <div class="calc-result__row calc-result__row--featured">
             <span>Ecosistema Completo, Zolvex</span>
-            <b>$3.000.000</b>
+            <b>$2.500.000</b>
           </div>
           <div class="calc-savings" id="calcSavings">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
@@ -1203,6 +1260,7 @@
   <section id="precios">
     <div class="container">
       <div class="section-head centered" data-reveal>
+        <div class="live-badge" style="margin:0 auto 1.2rem;"><span class="live-dot"></span>Cupos limitados para nuevos ecosistemas este mes</div>
         <span class="eyebrow">Inversión</span>
         <h2>El costo de tener un equipo completo, en una sola operación</h2>
         <p>Precios de referencia. Cada ecosistema se ajusta al tamaño real del negocio y a lo que ya tengas construido.</p>
@@ -1213,28 +1271,43 @@
           <h3>Arranque</h3>
           <p class="desc">Para negocios que parten desde cero y necesitan la base construida.</p>
           <div class="price"><b>$1.200.000</b><span>COP / pago único</span></div>
+          <p class="price-card__note">*Precio si ya tienes tu catálogo inventariado. Si hay que construirlo desde cero, el costo varía según la cantidad de productos y su complejidad.</p>
           <ul>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Tienda online y catálogo montado</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Proveedor logístico conectado</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Redes sociales creadas y organizadas</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Primeras piezas de contenido</li>
           </ul>
-          <a class="btn btn--ghost btn--block" href="#contacto">Empezar aquí</a>
+          <a class="btn btn--ghost btn--block" href="#contacto" data-plan="Arranque">Empezar aquí</a>
+        </div>
+
+        <div class="price-card" data-reveal>
+          <h3>Solo Automatización</h3>
+          <p class="desc">Para negocios que solo necesitan el agente de WhatsApp con IA, sin el resto del ecosistema.</p>
+          <div class="price"><b>$1.800.000</b><span>COP / pago único</span></div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Agente de WhatsApp con IA a la medida</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Escala a un humano cuando lo necesita</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Entrega documentada, listo para operar</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Capacitación de tu equipo incluida</li>
+          </ul>
+          <div class="price-card__alt"><b>¿Prefieres que lo mantengamos nosotros?</b>Súmale $900.000 COP/mes: monitoreo, ajustes y reporte semanal de conversaciones incluidos.</div>
+          <a class="btn btn--ghost btn--block" href="#contacto" data-plan="Solo Automatización">Quiero solo el agente</a>
         </div>
 
         <div class="price-card price-card--featured" data-reveal>
           <span class="price-card__badge">El más elegido</span>
           <h3>Ecosistema Completo</h3>
           <p class="desc">El equivalente a 4 roles trabajando como un solo equipo para tu marca.</p>
-          <div class="price"><b>$3.000.000</b><span>COP / mes</span></div>
+          <div class="price"><b>$2.500.000</b><span>COP / mes</span></div>
           <ul>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Gestión de redes sociales (community manager)</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Edición de foto y video</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Campañas de Meta Ads gestionadas*</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Campañas de Meta y TikTok Ads gestionadas*</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Agente de WhatsApp con IA, activo 24/7</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Reportes y ajustes mensuales</li>
           </ul>
-          <a class="btn btn--solid btn--block" href="#contacto">Empezar aquí</a>
+          <a class="btn btn--solid btn--block" href="#contacto" data-plan="Ecosistema Completo">Empezar aquí</a>
         </div>
 
         <div class="price-card" data-reveal>
@@ -1247,10 +1320,17 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Integraciones a medida (CRM, ERP)</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Soporte prioritario</li>
           </ul>
-          <a class="btn btn--ghost btn--block" href="#contacto">Hablar con ventas</a>
+          <a class="btn btn--ghost btn--block" href="#contacto" data-plan="A la Medida">Hablar con ventas</a>
         </div>
       </div>
-      <p class="form-note" data-reveal style="margin-top:2rem;">*El presupuesto de pauta en Meta Ads se maneja aparte, directamente en la plataforma — para que tengas control total de cuánto inviertes.</p>
+      <p class="form-note" data-reveal style="margin-top:2rem;">*El presupuesto de pauta en Meta y TikTok Ads se maneja aparte, directamente en la plataforma — para que tengas control total de cuánto inviertes.</p>
+
+      <div class="free-consult" data-reveal style="margin-top:1.8rem;">
+        <div class="free-consult__text">
+          <h3>Garantía del primer mes</h3>
+          <p>Si en el primer mes no ves el ecosistema funcionando como se te prometió, no sigues pagando. Sin letra pequeña, sin permanencia obligatoria.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1258,8 +1338,8 @@
   <section id="faq" class="faq">
     <div class="container">
       <div class="section-head" data-reveal>
-        <span class="eyebrow">Preguntas frecuentes</span>
-        <h2>Antes de que preguntes</h2>
+        <span class="eyebrow" style="color:var(--green-400);">¿Aún dudas?</span>
+        <h2>Preguntas frecuentes</h2>
       </div>
 
       <div class="faq-list" data-reveal>
@@ -1273,7 +1353,7 @@
         </details>
         <details class="faq-item">
           <summary>¿La pauta publicitaria está incluida en el precio?<span class="icon" aria-hidden="true"></span></summary>
-          <div class="faq-body">El precio cubre la gestión y la estrategia. El presupuesto de pauta en Meta Ads se maneja aparte, directamente en la plataforma, para que tengas control total de cuánto inviertes.</div>
+          <div class="faq-body">El precio cubre la gestión y la estrategia. El presupuesto de pauta en Meta y TikTok Ads se maneja aparte, directamente en la plataforma, para que tengas control total de cuánto inviertes.</div>
         </details>
         <details class="faq-item">
           <summary>¿Qué pasa si el agente no sabe responder algo?<span class="icon" aria-hidden="true"></span></summary>
@@ -1290,6 +1370,18 @@
         <details class="faq-item">
           <summary>¿Trabajan con cualquier tipo de negocio?<span class="icon" aria-hidden="true"></span></summary>
           <div class="faq-body">Trabajamos mejor con negocios que ya tienen clientela real y quieren abrirle una puerta digital más grande — desde tiendas físicas y talleres hasta marcas que venden por redes.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué pasa si mi negocio no es muy digital todavía?<span class="icon" aria-hidden="true"></span></summary>
+          <div class="faq-body">No necesitas saber nada de tecnología. Nosotros montamos, conectamos y dejamos funcionando todo el ecosistema — tú solo apruebas el contenido y atiendes a los clientes que te lleguen.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Puedo contratar solo el agente de WhatsApp, sin el resto?<span class="icon" aria-hidden="true"></span></summary>
+          <div class="faq-body">Sí, es el plan "Solo Automatización". Puedes tenerlo con mantenimiento mensual incluido, o como un pago único si prefieres operarlo tú mismo después.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Hay algún tipo de garantía?<span class="icon" aria-hidden="true"></span></summary>
+          <div class="faq-body">Sí. Si en el primer mes no ves el ecosistema funcionando como se te prometió, no sigues pagando — sin permanencia obligatoria ni letra pequeña.</div>
         </details>
       </div>
     </div>
@@ -1345,7 +1437,7 @@
           <svg class="brand__mark" viewBox="0 0 100 100" aria-hidden="true">
             <polygon points="10,10 90,10 90,30 43,70 90,70 90,90 10,90 10,70 57,30 10,30" fill="url(#navGrad)"/>
           </svg>
-          <span class="brand__word">ZOLVEX</span>
+          <span class="brand__word">OLVEX</span>
         </a>
         <p>Tienda, redes, pauta y un agente de IA — el ecosistema digital completo de tu negocio, en un solo equipo.</p>
       </div>
@@ -1363,7 +1455,7 @@
         <div class="footer__col">
           <h4>Contacto</h4>
           <ul>
-            <li><a href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="https://wa.me/573156617585" target="_blank" rel="noopener">WhatsApp</a></li>
             <li><a href="mailto:hola@zolvex.co">hola@zolvex.co</a></li>
             <li><a href="#top">Cali, Colombia</a></li>
           </ul>
@@ -1378,6 +1470,11 @@
   </div>
 </footer>
 
+<div class="sticky-cta">
+  <span>Escribe hoy y agenda tu consulta gratis</span>
+  <a class="btn btn--solid" href="https://wa.me/573156617585?text=Hola%2C%20quiero%20agendar%20mi%20consulta%20gratis" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
 <script>
 (function(){
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1389,6 +1486,7 @@
   var progressBar = document.getElementById('scrollProgress');
   var heroVisual = document.querySelector('.hero__visual');
   var heroHeight = window.innerHeight;
+  var bgBrand = document.getElementById('bgBrand');
 
   function onScroll(){
     var y = window.scrollY;
@@ -1401,6 +1499,11 @@
 
     if(heroVisual && !reduceMotion && y < heroHeight){
       heroVisual.style.transform = 'translateY(' + (y * 0.12) + 'px)';
+    }
+
+    if(bgBrand && !reduceMotion){
+      var bgOffset = Math.min(y * 0.06, 90);
+      bgBrand.style.transform = 'translate(-50%, calc(-50% + ' + bgOffset + 'px))';
     }
   }
   onScroll();
@@ -1481,7 +1584,7 @@
   // ---- Savings calculator ----
   var calcIds = ['calcCM', 'calcEditor', 'calcAds', 'calcStrat'];
   var calcValEls = { calcCM:'calcCMVal', calcEditor:'calcEditorVal', calcAds:'calcAdsVal', calcStrat:'calcStratVal' };
-  var ECOSYSTEM_PRICE = 3000000;
+  var ECOSYSTEM_PRICE = 2500000;
 
   function formatCOP(n){
     return '$' + Math.round(n).toLocaleString('es-CO');
@@ -1636,9 +1739,20 @@
   }
 
   // ---- WhatsApp contact form ----
-  var WHATSAPP_NUMBER = "573000000000"; // TODO: reemplaza por tu número real, formato 57XXXXXXXXXX
+  var WHATSAPP_NUMBER = "573156617585";
   var form = document.getElementById('contactForm');
   var success = document.getElementById('formSuccess');
+
+  // ---- Auto-fill message when a pricing plan is selected ----
+  document.querySelectorAll('[data-plan]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var plan = btn.getAttribute('data-plan');
+      var msgEl = document.getElementById('fmessage');
+      if(msgEl){
+        msgEl.value = 'Hola, me interesa el paquete ' + plan + '. Quiero más información.';
+      }
+    });
+  });
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
