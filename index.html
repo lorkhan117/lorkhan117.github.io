@@ -879,7 +879,7 @@
     </nav>
 
     <div class="nav__right">
-      <a class="btn btn--solid nav__cta" href="https://wa.me/573156617585?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Zolvex" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+      <a class="btn btn--solid nav__cta" href="https://wa.me/573202330114?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Zolvex" target="_blank" rel="noopener">Hablar por WhatsApp</a>
       <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -1474,8 +1474,8 @@
         <div class="footer__col">
           <h4>Contacto</h4>
           <ul>
-            <li><a href="https://wa.me/573156617585" target="_blank" rel="noopener">WhatsApp</a></li>
-            <li><a href="mailto:hola@zolvex.co">hola@zolvex.co</a></li>
+            <li><a href="https://wa.me/573202330114" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:hola@zolvexco.com">hola@zolvexco.com</a></li>
             <li><a href="#top">Cali, Colombia</a></li>
           </ul>
         </div>
@@ -1492,7 +1492,7 @@
 
 <div class="sticky-cta">
   <span>Escribe hoy y agenda tu consulta gratis</span>
-  <a class="btn btn--solid" href="https://wa.me/573156617585?text=Hola%2C%20quiero%20agendar%20mi%20consulta%20gratis" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn btn--solid" href="https://wa.me/573202330114?text=Hola%2C%20quiero%20agendar%20mi%20consulta%20gratis" target="_blank" rel="noopener">WhatsApp</a>
 </div>
 
 <script>
@@ -1587,6 +1587,7 @@
 
   // ---- Scroll reveal ----
   var revealEls = document.querySelectorAll('[data-reveal]');
+  function revealAll(){ revealEls.forEach(function(el){ el.classList.add('in-view'); }); }
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
@@ -1598,8 +1599,16 @@
     }, { threshold: 0.15 });
     revealEls.forEach(function(el){ io.observe(el); });
   } else {
-    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+    revealAll();
   }
+  // Cuando se navega por un enlace ancla (ej. "Agendar consulta gratis" -> #contacto),
+  // el salto puede saltarse secciones enteras sin que el observer llegue a activarlas,
+  // dejando la sección de destino invisible (opacity:0) varios segundos — parece que
+  // "no pasa nada". Revelamos todo de una vez en ese caso.
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', revealAll);
+  });
+  if(location.hash){ revealAll(); }
 
   // ---- Savings calculator ----
   var calcIds = ['calcCM', 'calcEditor', 'calcAds', 'calcStrat'];
@@ -1759,7 +1768,7 @@
   }
 
   // ---- WhatsApp contact form ----
-  var WHATSAPP_NUMBER = "573156617585";
+  var WHATSAPP_NUMBER = "573202330114";
   var form = document.getElementById('contactForm');
   var success = document.getElementById('formSuccess');
 
